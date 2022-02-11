@@ -1,11 +1,16 @@
+inImgPNG = 'dexterLab.png'
+inImgJPG = 'dexterLab2.jpg'
+
+outImgPNG = 'topSecret.png'
+outImgJPG = 'topSecret2.jpg'
+
+msg = 'Johnny is king'
+
 from stegano import lsb
 
-inImgJPG = "sample_secret.jpg"
-outImgJPG = "sample_secret2.jpg"
+# we are hiding the text here
+lsb.hide(inImgPNG, message=msg).save(outImgPNG)
 
-msg = "Johnny is king"
-
-lsb.hide(inImgJPG, message=msg).save(outImgJPG)
-message = lsb.reveal(outImgJPG)
-
-print(f"secret message: {message}")
+# we are getting text from the image
+message = lsb.reveal(outImgPNG)
+print(f'Reveal message: {message}')
