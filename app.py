@@ -1,6 +1,11 @@
 from stegano import lsb
 
-secret = lsb.hide("sample_secret.jpg", "Johnny is king")
+inImgJPG = "sample_secret.jpg"
+outImgJPG = "sample_secret2.jpg"
 
-secret.save("sample_secret.jpg")
-lsb.reveal("sample_secret.jpg")
+msg = "Johnny is king"
+
+lsb.hide(inImgJPG, message=msg).save(outImgJPG)
+message = lsb.reveal(outImgJPG)
+
+print(f"secret message: {message}")
